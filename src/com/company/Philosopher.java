@@ -1,16 +1,40 @@
 package com.company;
 
-public class Philosopher {
-    Monitor monitor;
+public class Philosopher implements Runnable {
+    State hlp;
+    Chopstick left, right;
     int id;
 
-    public Philosopher(Monitor monitor, int id) {
-        this.monitor = monitor;
+    public Philosopher(State hlp, Chopstick l, Chopstick r, int id) {
+        this.hlp = hlp;
+        this.left = l;
+        this.right = r;
         this.id = id;
+    }
+
+    private void eat() {
+        try {
+            Thread.sleep(2000);
+            System.out.println("Philosopher " + this.id + " is eating.");
+        } catch (Exception e) {
+        }
+    }
+
+    private void think() {
+        try {
+            Thread.sleep(2000);
+            System.out.println("Philosopher " + this.id + " is thinking.");
+        } catch (Exception e) {
+        }
     }
 
     @Override
     public void run() {
-
+        while(true) {
+            hlp.pickupChopsticks(this.id, this.left, this.right);
+            eat();
+            hlp.releaseChopsticks(id, this.left, this.right);
+            think();
+        }
     }
 }

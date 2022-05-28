@@ -32,7 +32,7 @@ public class State {
         for (int i = 0; i < 5; i++){
             line.append(state[i] + " ");
         }
-        System.out.println(line + "(" + (id + 1) + ")");
+        System.out.println(line + "(" + id + ")");
     }
 
     public void pickupChopsticks(int id, Chopstick left, Chopstick right) {

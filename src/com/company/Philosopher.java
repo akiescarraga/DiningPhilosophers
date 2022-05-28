@@ -32,10 +32,8 @@ public class Philosopher implements Runnable {
     public void run() {
         while(true) {
             hlp.pickupChopsticks(this.id, this.left, this.right);
-            System.out.println("Philosopher " + this.id + " acquired its left and right chopsticks.");
             eat();
             hlp.releaseChopsticks(this.id, this.left, this.right);
-            System.out.println("Philosopher " + this.id + " released its left and right chopsticks.");
             think();
         }
     }

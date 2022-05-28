@@ -51,6 +51,9 @@ public class State {
             setState(id, "X");
             printState(id);
 
+            System.out.println("Philosopher " + id + " acquired its left and right chopsticks.");
+
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -69,6 +72,8 @@ public class State {
         condition[(id + 1) % 5].signalAll();
         condition[(id + 4) % 5].signalAll();
         printState(id);
+
+        System.out.println("Philosopher " + id + " released its left and right chopsticks.");
 
         mutex.unlock();
 

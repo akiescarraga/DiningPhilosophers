@@ -25,16 +25,6 @@ public class State {
         state[id] = s;
     }
 
-    void printState(int id) {
-
-        StringBuffer line = new StringBuffer();
-
-        for (int i = 0; i < 5; i++){
-            line.append(state[i] + " ");
-        }
-        System.out.println(line + "(" + id + ")");
-    }
-
     public void pickupChopsticks(int id, Chopstick left, Chopstick right) {
 
         mutex.lock();
@@ -49,7 +39,6 @@ public class State {
             right.setAvailability(false);
 
             setState(id, "X");
-            printState(id);
 
             System.out.println("Philosopher " + id + " acquired its left and right chopsticks.");
 
@@ -71,7 +60,6 @@ public class State {
 
         condition[(id + 1) % 5].signalAll();
         condition[(id + 4) % 5].signalAll();
-        printState(id);
 
         System.out.println("Philosopher " + id + " released its left and right chopsticks.");
 
